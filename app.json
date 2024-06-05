@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "userManagement",
+    "scheme": "com.anonymous.userManagement",
     "slug": "userManagement",
     "version": "1.0.0",
     "orientation": "portrait",

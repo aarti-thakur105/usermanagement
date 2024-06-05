@@ -1,10 +1,11 @@
-import React from 'react';
-import { Button, View, StyleSheet, SafeAreaView } from 'react-native';
+import React,{ useEffect } from 'react';
+import { Button, View, StyleSheet, SafeAreaView, Linking } from 'react-native';
 import { Amplify } from 'aws-amplify';
 import { Authenticator, useAuthenticator, withAuthenticator } from '@aws-amplify/ui-react-native';
-import awsconfig from './src/aws-exports';
-
-Amplify.configure(awsconfig);
+// import awsconfig from './src/aws-exports';
+import amplifyconfig from './src/amplifyconfiguration.json';
+Amplify.configure(amplifyconfig);
+// Amplify.configure(awsconfig);
 
 const SignOutButton = () => {
   const { signOut } = useAuthenticator();
@@ -32,17 +33,35 @@ const App = () => {
         isRequired: true,
         type: 'email',
       },
-      phone_number: {
-        placeholder: 'Phone Number',
-        isRequired: true,
-        type: 'tel',
-      },
+      // phone_number: {
+      //   placeholder: 'Phone Number',
+      //   isRequired: true,
+      //   type: 'tel',
+      // },
       name: {
         placeholder: 'Name',
         isRequired: true,
       },
     },
   };
+
+  // useEffect(() => {
+  //   Linking.addEventListener('url', handleDeepLink);
+  //   return () => {
+  //     Linking.removeEventListener('url', handleDeepLink);
+  //   };
+  // }, []);
+
+  // const handleDeepLink = (event) => {
+  //   const { url } = event;
+  //   if (url.startsWith('com.anonymous.usermanagement://')) {
+  //     const queryString = url.split('?')[1];
+  //     const params = new URLSearchParams(queryString);
+  //     const code = params.get('code');
+  //     const state = params.get('state');
+  //     // Handle the deep link based on the parameters
+  //   }
+  // };
 
   return (
     <Authenticator.Provider>
